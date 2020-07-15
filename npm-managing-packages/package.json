@@ -19,5 +19,6 @@
     "freecodecamp", "npm", "exercises"
   ],
   "author": "Musa C. Yurt",
-  "license": "MIT"
+  "license": "MIT",
+  "version": "1.0.0"
 }
