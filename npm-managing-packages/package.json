@@ -2,6 +2,7 @@
   "name": "fcc-learn-npm-package-json",
   "description": "A project to learn managing packages with npm",
   "dependencies": {
+    "moment": "2.14.0",
     "express": "^4.14.0"
   },
   "main": "server.js",
@@ -16,7 +17,9 @@
     "url": "https://idontknow/todo.git"
   },
   "keywords": [
-    "freecodecamp", "npm", "exercises"
+    "freecodecamp",
+    "npm",
+    "exercises"
   ],
   "author": "Musa C. Yurt",
   "license": "MIT",
