@@ -18,5 +18,6 @@
   "keywords": [
     "freecodecamp", "npm", "exercises"
   ],
-  "author": "Musa C. Yurt"
+  "author": "Musa C. Yurt",
+  "license": "MIT"
 }
