@@ -3,6 +3,7 @@ let express = require('express');
 const { static } = require('express');
 let app = express();
 require('dotenv').config()
+let bodyParser = require('body-parser')
 
 // --> 7)  Mount the Logger middleware here
 app.use((req, res, next)=>{
@@ -11,8 +12,8 @@ app.use((req, res, next)=>{
 })
 
 // --> 11)  Mount the body-parser middleware  here
+app.use(bodyParser.urlencoded({ extended: false }))
 
-console.log(process.env.MESSAGE_STYLE)
 /** 1) Meet the node console. */
 console.log("Hello World")
 
@@ -50,7 +51,10 @@ app.get("/:word/echo", (req,res)=>res.json({echo: req.params.word}))
 
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
-
+app.get("/name", (req,res)=>{
+    const {first,last} = req.query
+    res.json({name: `${first} ${last}`})
+  })
   
 /** 11) Get ready for POST Requests - the `body-parser` */
 // place it before all the routes !
