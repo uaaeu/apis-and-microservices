@@ -1,14 +1,15 @@
 
-var express = require('express');
+let express = require('express');
 const { static } = require('express');
-var app = express();
+let app = express();
+require('dotenv').config()
 
 // --> 7)  Mount the Logger middleware here
 
 
 // --> 11)  Mount the body-parser middleware  here
 
-
+console.log(process.env.MESSAGE_STYLE)
 /** 1) Meet the node console. */
 console.log("Hello World")
 
@@ -22,10 +23,14 @@ app.get("/", (req, res) => res.sendFile(`${__dirname}/views/index.html`))
 app.use(express.static(`${__dirname}/public`))
 
 /** 5) serve JSON on a specific route */
-app.get("/json", (req, res) => res.json({"message": "Hello json"}))
+// app.get("/json", (req, res) => res.json({"message": "Hello json"}))
 
 /** 6) Use the .env file to configure the app */
- 
+app.get("/json", (req, res) => {
+    if(process.env.MESSAGE_STYLE === 'uppercase'){
+        res.json({"message": "HELLO JSON"})
+    } else {res.json({"message": "Hello json"})}
+}) 
  
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
