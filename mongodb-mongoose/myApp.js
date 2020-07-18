@@ -226,10 +226,12 @@ const findEditThenSave = (personId, done) => {
 // to `findOneAndUpdate()`. By default the method
 // passes the unmodified object to its callback.
 
-var findAndUpdate = function(personName, done) {
-  var ageToSet = 20;
-
-  done(null/*, data*/);
+const findAndUpdate = (personName, done) => {
+  const ageToSet = 20;
+  Person.findOneAndUpdate({name: personName}, {age: ageToSet}, {new: true}, (err, updatedAge) => {
+    if(err) return console.log(err);
+    done(null, updatedAge);
+  })
 };
 
 /** # CRU[D] part IV - DELETE #
