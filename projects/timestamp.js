@@ -25,3 +25,26 @@ app.get("/api/timestamp/", (req, res) => {
   resObj["utc"] = new Date().toUTCString();
   res.json(resObj);
 });
+
+
+//Another solution
+app.get("/api/timestamp/", (req, res) => {
+  res.json({ unix: Date.now(), utc: Date() });
+});
+
+app.get("/api/timestamp/:input", (req, res) => {
+  let input = req.params.input;
+
+  if (/\d{5,}/.test(input)) {
+    let dateInt = parseInt(input);
+    res.json({ unix: input, utc: new Date(input).toUTCString() });
+  }
+
+  let dateObj = new Date(input);
+
+  if (dateObj.toString() === "Invalid Date") {
+    res.json({ error: "Invalid Date" });
+  } else {
+    res.json({ unix: dateObj.valueOf(), utc: dateObj.toUTCString() });
+  }
+});
